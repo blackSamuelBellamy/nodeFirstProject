@@ -5,14 +5,19 @@ const citas = require('./citas.json')
 const registrar = (nombreAnimal, edad, tipoAnimal, colorAnimal, enfermedad) => {
 
     citas.push({
-        "Nombre del animal": nombreAnimal,
-        "Edad": edad,
-        "Tipo de animal": tipoAnimal,
-        "Color del animal": colorAnimal,
-        "Enfermedad": enfermedad
+        "Nombre del animal": nombreAnimal.toLowerCase(),
+        "Edad": edad + ' años',
+        "Tipo de animal": tipoAnimal.toLowerCase(),
+        "Color del animal": colorAnimal.toLowerCase(),
+        "Enfermedad": enfermedad.toLowerCase()
     })
 
-    fs.writeFileSync('citas.json', JSON.stringify(citas))
+    try {
+        fs.writeFileSync('citas.json', JSON.stringify(citas))
+    } catch (e) {
+        console.log(e)
+        console.log('Hubo un error, intentalo nuevamente en un momento')
+    }
 }
 
 const leer = () => {
