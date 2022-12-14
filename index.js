@@ -7,10 +7,20 @@ const tipo = arguments[3]
 const color = arguments[4]
 const enfermedad = arguments[5]
 
-if (arguments[0].toLowerCase() === 'registrar' && arguments.length === 6) {
 
-    registrar(nombre, edad, tipo, color, enfermedad)
-    console.log('\nCita agendada satisfactoriamente!\n')
+if (arguments[0].toLowerCase() !== 'registrar' &&
+    arguments[0].toLowerCase() !== 'leer') {
+    console.log('\nDespués del "node index" debes ingresar la función "registrar" o "leer" según desees\n')
+}
+
+else if (arguments[0].toLowerCase() === 'registrar' && arguments.length === 6) {
+
+    if (isNaN(arguments[2])) {
+        console.log('\nLa edad no es un número, favor ingresa la edad correctamente\n')
+    } else {
+        registrar(nombre, edad, tipo, color, enfermedad)
+        console.log('\nCita agendada satisfactoriamente!\n')
+    }
 
 } else if (arguments[0].toLowerCase() === 'registrar' && arguments.length < 6) {
     console.log('\nAsegurate de ingresar todos los datos necesarios,')
