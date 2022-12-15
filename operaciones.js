@@ -26,18 +26,21 @@ const leer = () => {
     const horas = JSON.parse(desplegar)
     console.log('\n')
 
-    horas.map(cita => {
-        for(let i = 0; i < Object.keys(horas[0]).length; i ++) {
-            console.log(Object.keys(cita)[i] + ': ', Object.values(cita)[i])
-        }
-        console.log('\n')
-    })
+    if (horas.length === 0) {
+        console.log('No tienes citas, Ingresa al menos una cita para poder visualizar\n')
+    }
+    else {
 
-    if(horas.length === 0) 
-    console.log('No tienes citas, Ingresa al menos una cita para poder visualizar\n')
+        horas.map(cita => {
+            for (let i = 0; i < Object.keys(horas[0]).length; i++) {
+                console.log(Object.keys(cita)[i]  + ': ' , Object.values(cita)[i])
+            }
+            console.log('\n')
+        })
 
-    if(horas.length > 0)
-    console.log(`En total hay ${horas.length} ${horas.length === 1 ? 'cita': 'citas'}\n`)
+        console.log(`En total hay ${horas.length} ${horas.length === 1 ? 'cita' : 'citas'}\n`)
+
+    }
 
 }
 
